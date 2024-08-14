@@ -20,26 +20,29 @@ function Signup() {
         }
       });
 
-        const handleSubmit = (e) => {
-            if(SignupInput.email.length < 2 || SignupInput.password.length < 2) {
-                alert("Please Login")
-                navigate("/login")
-            }else {   
-                CartLocal()
-                navigate("/")
-                alert("Order Placed")
-                handleOrderPlacement()
-                e.preventDefault()
-                localStorage.setItem("user", JSON.stringify(SignupInput))
-                localStorage.setItem("loggedin", true);
-                localStorage.setItem("login", true);
-                localStorage.setItem("userCart", JSON.stringify(userCart)) || "[]"; setInput({
-                    email: SignupInput.email,
-                    password: SignupInput.password,
-                })
-            }
+      const handleSubmit = (e) => {
+        e.preventDefault();
+      
+        if (SignupInput.email.length < 2 || SignupInput.password.length < 2) {
+            alert("Please Login");
+            navigate("/login");
+        } else {   
+            CartLocal();
+            navigate("/");
+            alert("Order Placed");
+            handleOrderPlacement();
+            const userInput = {
+                email: SignupInput.email,
+                password: SignupInput.password,
+            };
+            setInput(userInput);
+            localStorage.setItem("input", JSON.stringify(userInput));
+            localStorage.setItem("user", JSON.stringify(SignupInput));
+            localStorage.setItem("loggedin", true);
+            localStorage.setItem("login", true);
         }
-
+      }
+      
         const CartLocal = () => {
             let use =  localStorage.getItem("userCart", JSON.stringify(userCart)) || "[]"
              use = JSON.parse(use)

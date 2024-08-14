@@ -29,41 +29,29 @@ const OrderPlaced = () => {
         }
     }
 
-    // const handleOrdersInput = () => {
-    //     if(input.email.length < 2 || input.password.length < 2) {
-    //         alert("Please Login")
-    //         navigate("/login")
-    //     }else {
-    //         CartLocal()
-    //         alert("Order Placed")
-    //         handleOrderPlacement()
-    //         navigate("/")
-    //     }
-    // }
-
     const handleOrders = () => {
         if(input.email.length > 2 || input.password.length > 2) {
-        // if(SignupInput.email.length > 2 || SignupInput.password.length > 2) {
             CartLocal()
             handleOrderPlacement()
             navigate("/")
-            // alert("Please Login")
-            // navigate("/login")
         }else {
-            // CartLocal()
             navigate("/login")
-            // alert("Order Placed")
         }
     }
 
-    const CartLocal = () => {
-       let use =  localStorage.getItem("userCart", JSON.stringify(userCart)) || "[]"
-        use = JSON.parse(use)
-        use.push(userCart)
-        localStorage.setItem("userCart", JSON.stringify(use))
-    }
+    // const CartLocal = () => {
+    //     let r = (Math.random() + 1).toString(36).substring(7)
+    //     // console.log("🚀 ~ CartLocal ~ r:", r)
+    //    let use =  localStorage.getItem("userCart", JSON.stringify(userCart)) || "[]"
+    //     use = JSON.parse(use)
+    //     userCart[0].OrderNo = r
+    //     userCart[0].delivered = false
+    //     // console.log("🚀 ~ CartLocal ~ userCart:", userCart)
+    //     use.push(userCart)
+    //     localStorage.setItem("userCart", JSON.stringify(use))
+    // }
 
-        const { cart, increaseQuantity, decreaseQuantity, UserincreaseQuantity, UserdecreaseQuantity, handleOrderPlacement, SignupInput, input, wishlist, userCart, setUserCart } = useContext(StateContext)
+        const { cart, UserincreaseQuantity, CartLocal, UserdecreaseQuantity, handleOrderPlacement, input, wishlist, userCart } = useContext(StateContext)
 
     return (
         <div>
